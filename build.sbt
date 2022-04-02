@@ -1,14 +1,24 @@
 import Dependencies._
 
-ThisBuild / scalaVersion     := "2.12.8"
-ThisBuild / version          := "0.1.0-SNAPSHOT"
-ThisBuild / organization     := "com.example"
+ThisBuild / scalaVersion := "2.13.8"
+ThisBuild / version := "0.1.0-SNAPSHOT"
+ThisBuild / organization := "com.example"
 ThisBuild / organizationName := "example"
+
+val AkkaVersion = "2.6.8"
+val AkkaHttpVersion = "10.2.9"
 
 lazy val root = (project in file("."))
   .settings(
     name := "shoumonagram-core",
-    libraryDependencies += scalaTest % Test
+    libraryDependencies += scalaTest % Test,
+    libraryDependencies += "org.sangria-graphql" %% "sangria" % "3.0.0",
+    libraryDependencies += "org.sangria-graphql" %% "sangria-spray-json" % "1.0.2",
+    libraryDependencies += "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+    libraryDependencies += "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+    libraryDependencies += "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion,
+    libraryDependencies += "com.typesafe.akka" %% "akka-http-spray-json" % AkkaHttpVersion,
+    libraryDependencies += "ch.megard" %% "akka-http-cors" % "1.1.3"
   )
 
 // Uncomment the following for publishing to Sonatype.
